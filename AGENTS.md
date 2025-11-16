@@ -13,6 +13,7 @@
 - `index.js` exposes the CAINode client and helper utilities; keep all runtime logic here or in new modules under `src/` to avoid bloating the entry file.
 - `example.cjs` shows CommonJS usage, while `example.ts` mirrors the same API for Bun/Deno TypeScript workflows; update both when you add features.
 - `postinstall_info.js` is invoked after install to display notices—update it if you add environment prerequisites.
+- `replit-app/` contains the deployable frontend/backend that automates `generate_token_auto`; treat it as a separate workspace with its own `package.json`.
 - Tests and fixtures should live under a top-level `tests/` directory; co-locate any mock data in `tests/fixtures/` to keep the published package lean.
 
 ## Build, Test, and Development Commands
@@ -20,6 +21,7 @@
 - `node example.cjs` is the fastest way to sanity-check new APIs against real Character.AI credentials.
 - `bun run example.ts` (or `deno run --allow-net example.ts`) validates cross-runtime compatibility.
 - `npm test` is currently a placeholder; replace it with your preferred runner once coverage exists so CI signals breakages.
+- `cd replit-app && npm start` launches the Replit-facing Express server plus dashboard for batching `generate_token_auto`.
 
 ## Coding Style & Naming Conventions
 - The library is shipped as pure ESM (`"type": "module"`); prefer `import`/`export` and avoid mixing CommonJS inside `index.js`.

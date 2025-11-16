@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CAINode Token Runner</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <main>
+        <header>
+            <h1>CAINode Token Runner</h1>
+            <p>Queue email addresses, trigger <code>generate_token_auto</code>, and capture the resulting Character.AI tokens.</p>
+        </header>
+
+        <section class="panel">
+            <h2>Submit Email</h2>
+            <form id="token-form">
+                <label>
+                    Email address
+                    <input type="email" name="email" placeholder="person@example.com" required />
+                </label>
+                <label>
+                    Timeout (seconds)
+                    <input type="number" name="timeout" min="0" value="120" />
+                </label>
+                <p class="hint">Timeout controls how long we wait for the user to click the verification email. Set to 0 to wait indefinitely.</p>
+                <button type="submit">Start Token Flow</button>
+                <button type="button" id="prefill-test">Use test email</button>
+                <p id="form-status" role="status"></p>
+            </form>
+        </section>
+
+        <section class="panel">
+            <h2>Active Requests</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Email</th>
+                        <th>Status</th>
+                        <th>Timeout</th>
+                        <th>Updated</th>
+                        <th>Error</th>
+                    </tr>
+                </thead>
+                <tbody id="jobs-body"></tbody>
+            </table>
+        </section>
+
+        <section class="panel">
+            <h2>Stored Tokens</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Email</th>
+                        <th>Token</th>
+                        <th>Captured</th>
+                    </tr>
+                </thead>
+                <tbody id="tokens-body"></tbody>
+            </table>
+        </section>
+    </main>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>
